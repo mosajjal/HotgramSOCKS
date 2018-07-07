@@ -2,14 +2,19 @@
 import base64
 import requests
 import json
+from random import randint
 from Crypto.Cipher import AES
 
 IV = "YC'2bmK=b%#NQ?9j"
 KEY = "KCH@LQj#>6VCqqLg"
-URL = "http://lh58.hotgram.ir/v1/proxy"
+URL = f"http://lh{randint(1,80)}.hotgram.ir/v1/proxy"
+
+headers = {
+    "X-SLS-GPRS": "false",
+}
 
 def get_proxy(IV, KEY, URL):
-    response = requests.get(URL).text
+    response = requests.post(URL, headers=headers).text
     b64_encrypted_proxy = json.loads(response).get("data")[0]
     enc = base64.b64decode(b64_encrypted_proxy)
     cipher = AES.new(KEY, AES.MODE_CBC, IV)
