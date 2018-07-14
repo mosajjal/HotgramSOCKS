@@ -7,10 +7,21 @@ from Crypto.Cipher import AES
 
 IV = "YC'2bmK=b%#NQ?9j"
 KEY = "KCH@LQj#>6VCqqLg"
-URL = f"http://lh{randint(1,80)}.hotgram.ir/v1/proxy"
+HOST = f"lh{randint(1,80)}.hotgram.ir"
+URL = f"http://{HOST}/v1/proxy"
 
 headers = {
     "X-SLS-GPRS": "false",
+    "X-SLS-Carrier": "",
+    "X-SLS-UID": "0",
+    "X-SLS-AppId": "3",
+    "X-SLS-VersionCode": "135",
+    "Authorization": "Custom QWxhZGRpbjpPcGVuU2VzYW1l",
+    "Content-Type": "application/json",
+    "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 7.0; dolphin Build/NRD91N)",
+    "Host": HOST,
+    "Connection": "Keep-Alive",
+    "Accept-Encoding": "gzip",
 }
 
 def get_proxy(IV, KEY, URL):
