@@ -3,12 +3,14 @@ import base64
 import requests
 import json
 from random import randint
+from datetime import datetime
 from Crypto.Cipher import AES
 
 IV = "YC'2bmK=b%#NQ?9j"
 KEY = "KCH@LQj#>6VCqqLg"
+SALT = datetime.now().strftime("%s")
 HOST = f"lh{randint(1,80)}.hotgram.ir"
-URL = f"http://{HOST}/v1/proxy"
+URL = f"http://{HOST}/v1/proxy?slt={SALT}&appId=3"
 
 headers = {
     "X-SLS-GPRS": "false",
