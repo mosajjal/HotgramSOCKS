@@ -8,7 +8,7 @@ from Crypto.Cipher import AES
 
 IV = "YC'2bmK=b%#NQ?9j"
 KEY = "KCH@LQj#>6VCqqLg"
-SALT = datetime.now().strftime("%s")
+SALT = datetime.now().strftime("%s")  + str(randint(0, 999)).zfill(3)
 HOST = f"lh{randint(1,80)}.hotgram.ir"
 URL = f"http://{HOST}/v1/proxy?slt={SALT}&appId=3"
 
